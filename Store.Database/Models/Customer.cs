@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
 
 namespace Store.Database.Models
 {
@@ -23,5 +22,7 @@ namespace Store.Database.Models
         [StringLength(64)]
         public virtual string Password { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+
+        public virtual ICollection<Cart> Cart { get; set; }
     }
 }

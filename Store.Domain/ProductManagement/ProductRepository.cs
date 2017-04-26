@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using AutoMapper;
 using Store.Database;
@@ -20,17 +21,26 @@ namespace Store.Domain.ProductManagement
             return storeContext.Products.Select(Mapper.Map<Product>).ToList();
         }
 
+        public int UpdateProduct(Product product)
+        {
+            var productDto = Mapper.Map<Database.Models.Product>(product);
+            storeContext.Products.AddOrUpdate(productDto);
+            storeContext.SaveChanges();
+            return productDto.Id;
+        }
+
         public Product GetProductById(int id)
         {
             var product = storeContext.Products.SingleOrDefault(x => x.Id == id);
             return Mapper.Map<Product>(product);
         }
 
-        public void AddProduct(Product product)
+        public int AddProduct(Product product)
         {
             var productDto = Mapper.Map<Database.Models.Product>(product);
             storeContext.Products.Add(productDto);
             storeContext.SaveChanges();
+            return productDto.Id;
         }
 
     }

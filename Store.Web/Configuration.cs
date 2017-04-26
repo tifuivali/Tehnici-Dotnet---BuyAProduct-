@@ -3,6 +3,7 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using AutoMapper;
 using Store.Web.CustomerService;
+using Store.Web.OrderService;
 using Store.Web.ProductService;
 
 namespace Store.Web
@@ -24,6 +25,7 @@ namespace Store.Web
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterType<CustomerServiceClient>();
             builder.RegisterType<ProductServiceClient>();
+            builder.RegisterType<OrderServiceClient>();
             var container = builder.Build();
             return container;
         }

@@ -13,11 +13,12 @@ namespace Store.Domain.ProductCategoryManagement
             this.storeContext = storeContext;
         }
 
-        public void AddProductCategory(ProductCategory productCategory)
+        public int AddProductCategory(ProductCategory productCategory)
         {
             var productCategoryDto = Mapper.Map<Database.Models.ProductCategory>(productCategory);
             storeContext.ProductCategories.Add(productCategoryDto);
             storeContext.SaveChanges();
+            return productCategoryDto.Id;
         }
 
         public IList<ProductCategory> GetAllProductCategories()

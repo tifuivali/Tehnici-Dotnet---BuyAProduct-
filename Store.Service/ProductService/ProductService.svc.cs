@@ -25,11 +25,18 @@ namespace Store.Service.ProductService
             return products;
         }
 
-        public string AddProduct(Product product)
+        public int AddProduct(Product product)
         {
             var domainProduct = Mapper.Map<Domain.ProductManagement.Product>(product);
-            productRepository.AddProduct(domainProduct);
-            return "Product created!";
+            var createdProductId = productRepository.AddProduct(domainProduct);
+            return createdProductId;
+        }
+
+        public int UpdateProduct(Product product)
+        {
+            var domainProduct = Mapper.Map<Domain.ProductManagement.Product>(product);
+            var updatedProductId = productRepository.UpdateProduct(domainProduct);
+            return updatedProductId;
         }
 
         public Product GetProductById(int id)
@@ -38,11 +45,11 @@ namespace Store.Service.ProductService
             return Mapper.Map<Product>(domainProduct);
         }
 
-        public string AddProductCategory(ProductCategory productCategory)
+        public int AddProductCategory(ProductCategory productCategory)
         {
             var domainProductCategory = Mapper.Map<Domain.ProductCategoryManagement.ProductCategory>(productCategory);
-            productCategoryRepository.AddProductCategory(domainProductCategory);
-            return "Product category created!";
+            var productCategoryId = productCategoryRepository.AddProductCategory(domainProductCategory);
+            return productCategoryId;
         }
 
         public IEnumerable<ProductCategory> GetAllProductCategories()

@@ -19,5 +19,6 @@ namespace Store.Database.Models
 
         public virtual ProductCategory Category { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual  ICollection<Cart> Carts { get; set; }
     }
 }

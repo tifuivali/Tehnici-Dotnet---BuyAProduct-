@@ -11,13 +11,16 @@ namespace Store.Service.ProductService
         IEnumerable<Product> GetAllProducts();
 
         [OperationContract]
-        string AddProduct(Product product);
+        int AddProduct(Product product);
+
+        [OperationContract]
+        int UpdateProduct(Product product);
 
         [OperationContract]
         Product GetProductById(int id);
 
         [OperationContract]
-        string AddProductCategory(ProductCategory productCategory);
+        int AddProductCategory(ProductCategory productCategory);
 
         [OperationContract]
         IEnumerable<ProductCategory> GetAllProductCategories();

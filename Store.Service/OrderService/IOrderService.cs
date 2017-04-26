@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
+using Store.Service.CustomerService.Data;
 using Store.Service.OrderService.Data;
 
 namespace Store.Service.OrderService
@@ -12,6 +13,9 @@ namespace Store.Service.OrderService
 
         [OperationContract]
         string AddOrder(Order order);
+
+        [OperationContract]
+        int CreateCart(Customer customer);
 
         [OperationContract]
         string DeleteOrder(int id);

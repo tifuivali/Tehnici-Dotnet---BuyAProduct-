@@ -134,6 +134,7 @@
     </Compile>
     <Compile Include="CustomerService\ICustomerService.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="OrderService\Data\Cart.cs" />
     <Compile Include="OrderService\Data\Order.cs" />
     <Compile Include="OrderService\IOrderService.cs" />
     <Compile Include="OrderService\OrderService.svc.cs">

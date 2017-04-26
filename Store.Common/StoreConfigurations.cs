@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using AutoMapper;
 using Store.Database;
+using Store.Domain.CartManagement;
 using Store.Domain.CustomerManagement;
 using Store.Domain.OrderManagement;
 using Store.Domain.ProductCategoryManagement;
@@ -30,6 +31,7 @@ namespace Store.Common
             AutofacBuilder.RegisterType<ProductCategoryRepository>().As<IProductCategoryRepository>().InstancePerDependency();
             AutofacBuilder.RegisterType<CustomerRepository>().As<ICustomerRepository>().InstancePerDependency();
             AutofacBuilder.RegisterType<OrderRepository>().As<IOrderRepository>().InstancePerDependency();
+            AutofacBuilder.RegisterType<CartRepository>().As<ICartRepository>().InstancePerDependency();
         }
 
         public IContainer BuildConfigurations()

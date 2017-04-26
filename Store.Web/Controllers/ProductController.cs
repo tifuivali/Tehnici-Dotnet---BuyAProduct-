@@ -44,24 +44,58 @@ namespace Store.Web.Controllers
                     //Create
                     var product = Mapper.Map<Product>(productViewModel);
                     var file = productViewModel.FileImage;
-                    if (file.ContentLength > 0)
+                    if (file != null)
                     {
-                        var fileName = Path.GetFileName(file.FileName);
-                        var path = Path.Combine(Server.MapPath("~/Content/Images/Products"), fileName);
-                        file.SaveAs(path);
-                        var imageUrl = Url.Content(path);
-                        productViewModel.ImageUrl = imageUrl;
+                        if (file.ContentLength > 0)
+                        {
+                            var fileName = Path.GetFileName(file.FileName);
+                            var path = Path.Combine(Server.MapPath("~/Content/Images/Products"), fileName);
+                            file.SaveAs(path);
+                            var imageUrl = Url.Action("Index", "Home");
+                            imageUrl += "/Content/Images/Products/" + fileName;
+                            productViewModel.ImageUrl = imageUrl;
+                            product.ImageUrl = imageUrl;
+                        }
+                    }
+                    else
+                    {
+                        var imageUrl = Url.Action("Index", "Home");
+                        imageUrl += "/Content/Images/Products/default.jpg";
                         product.ImageUrl = imageUrl;
                     }
-
-                    var createdProduct = productServiceClient.GetProductById(productViewModel.Id);
+                    var productCreatedId = productServiceClient.AddProduct(product);
+                    var createdProduct = productServiceClient.GetProductById(productCreatedId);
                     var createdProductViewModel = Mapper.Map<ProductViewModel>(createdProduct);
                     return View(createdProductViewModel);
                 }
                 else
                 {
                     //Update
-
+                    var product = Mapper.Map<Product>(productViewModel);
+                    var file = productViewModel.FileImage;
+                    if (file != null)
+                    {
+                        if (file.ContentLength > 0)
+                        {
+                            var fileName = Path.GetFileName(file.FileName);
+                            var path = Path.Combine(Server.MapPath("~/Content/Images/Products"), fileName);
+                            file.SaveAs(path);
+                            var imageUrl = Url.Action("Index", "Home");
+                            imageUrl += "/Content/Images/Products/" + fileName;
+                            productViewModel.ImageUrl = imageUrl;
+                            product.ImageUrl = imageUrl;
+                        }
+                    }
+                    else
+                    {
+                        var imageUrl = Url.Action("Index", "Home");
+                        imageUrl += "/Content/Images/Products/default.jpg";
+                        product.ImageUrl = imageUrl;
+                    }
+                    var updatedProductId = productServiceClient.UpdateProduct(product);
+                    var updatedProduct = productServiceClient.GetProductById(updatedProductId);
+                    var updatedProductViewModel = Mapper.Map<ProductViewModel>(updatedProduct);
+                    return View(updatedProductViewModel);
                 }
             }
 

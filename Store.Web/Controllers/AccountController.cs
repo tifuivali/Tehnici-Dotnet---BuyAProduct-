@@ -61,7 +61,10 @@ namespace Store.Web.Controllers
                     ModelState.AddModelError("Password", "An account with the same email already exists!");
                     return View();
                 }
-                var createdUser = customerServiceClient.AddCustomer(Mapper.Map<Customer>(userAccountViewModel));
+
+                var customer = Mapper.Map<Customer>(userAccountViewModel);
+                var createdUser = customerServiceClient.AddCustomer(customer);
+
                 if (createdUser != null)
                 {
                     return RedirectToAction("Login");

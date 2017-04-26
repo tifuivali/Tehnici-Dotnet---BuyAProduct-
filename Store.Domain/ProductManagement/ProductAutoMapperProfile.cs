@@ -21,6 +21,9 @@ namespace Store.Domain.ProductManagement
                 .ReverseMap()
                 .MaxDepth(3)
                 .PreserveReferences();
+            CreateMap<Cart, CartManagement.Cart>().ReverseMap()
+                .MaxDepth(3)
+                .PreserveReferences();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Store.Service.AutoMapperProfiles
             CreateMap<Product, Domain.ProductManagement.Product>().ReverseMap();
             CreateMap<ProductCategory, Domain.ProductCategoryManagement.ProductCategory>().ReverseMap();
             CreateMap<Order, Domain.OrderManagement.Order>().ReverseMap();
+            CreateMap<Cart, Domain.CartManagement.Cart>().ReverseMap();
         }
     }
 }

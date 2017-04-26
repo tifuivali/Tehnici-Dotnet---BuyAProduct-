@@ -93,7 +93,12 @@
     <Compile Include="Migrations\201704252223187_AddedImageUrlFieldToProductDto.Designer.cs">
       <DependentUpon>201704252223187_AddedImageUrlFieldToProductDto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704260900454_AddedCart.cs" />
+    <Compile Include="Migrations\201704260900454_AddedCart.Designer.cs">
+      <DependentUpon>201704260900454_AddedCart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
@@ -139,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704252223187_AddedImageUrlFieldToProductDto.resx">
       <DependentUpon>201704252223187_AddedImageUrlFieldToProductDto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704260900454_AddedCart.resx">
+      <DependentUpon>201704260900454_AddedCart.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

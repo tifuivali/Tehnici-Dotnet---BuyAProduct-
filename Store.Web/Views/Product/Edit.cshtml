@@ -39,6 +39,10 @@
         </div>
 
         <div class="form-group">
+            <img src=@Model.ImageUrl alt="Image" width="200" height="200"/>
+        </div>
+
+        <div class="form-group">
             @Html.TextBoxFor(m => m.FileImage, new { type = "file", value = "test" })
         </div>
 

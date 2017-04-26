@@ -11,6 +11,8 @@ namespace Store.Database
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductReview> ProductReviews { get; set; }
 
+        public DbSet<Cart> Carts { get; set; }
+
 
         public StoreContext() : base("Store")
         {

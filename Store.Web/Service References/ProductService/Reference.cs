@@ -508,10 +508,16 @@ namespace Store.Web.ProductService {
         System.Threading.Tasks.Task<Store.Web.ProductService.Product[]> GetAllProductsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/AddProduct", ReplyAction="http://tempuri.org/IProductService/AddProductResponse")]
-        string AddProduct(Store.Web.ProductService.Product product);
+        int AddProduct(Store.Web.ProductService.Product product);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/AddProduct", ReplyAction="http://tempuri.org/IProductService/AddProductResponse")]
-        System.Threading.Tasks.Task<string> AddProductAsync(Store.Web.ProductService.Product product);
+        System.Threading.Tasks.Task<int> AddProductAsync(Store.Web.ProductService.Product product);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/UpdateProduct", ReplyAction="http://tempuri.org/IProductService/UpdateProductResponse")]
+        int UpdateProduct(Store.Web.ProductService.Product product);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/UpdateProduct", ReplyAction="http://tempuri.org/IProductService/UpdateProductResponse")]
+        System.Threading.Tasks.Task<int> UpdateProductAsync(Store.Web.ProductService.Product product);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductById", ReplyAction="http://tempuri.org/IProductService/GetProductByIdResponse")]
         Store.Web.ProductService.Product GetProductById(int id);
@@ -520,10 +526,10 @@ namespace Store.Web.ProductService {
         System.Threading.Tasks.Task<Store.Web.ProductService.Product> GetProductByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/AddProductCategory", ReplyAction="http://tempuri.org/IProductService/AddProductCategoryResponse")]
-        string AddProductCategory(Store.Web.ProductService.ProductCategory productCategory);
+        int AddProductCategory(Store.Web.ProductService.ProductCategory productCategory);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/AddProductCategory", ReplyAction="http://tempuri.org/IProductService/AddProductCategoryResponse")]
-        System.Threading.Tasks.Task<string> AddProductCategoryAsync(Store.Web.ProductService.ProductCategory productCategory);
+        System.Threading.Tasks.Task<int> AddProductCategoryAsync(Store.Web.ProductService.ProductCategory productCategory);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetAllProductCategories", ReplyAction="http://tempuri.org/IProductService/GetAllProductCategoriesResponse")]
         Store.Web.ProductService.ProductCategory[] GetAllProductCategories();
@@ -573,12 +579,20 @@ namespace Store.Web.ProductService {
             return base.Channel.GetAllProductsAsync();
         }
         
-        public string AddProduct(Store.Web.ProductService.Product product) {
+        public int AddProduct(Store.Web.ProductService.Product product) {
             return base.Channel.AddProduct(product);
         }
         
-        public System.Threading.Tasks.Task<string> AddProductAsync(Store.Web.ProductService.Product product) {
+        public System.Threading.Tasks.Task<int> AddProductAsync(Store.Web.ProductService.Product product) {
             return base.Channel.AddProductAsync(product);
+        }
+        
+        public int UpdateProduct(Store.Web.ProductService.Product product) {
+            return base.Channel.UpdateProduct(product);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateProductAsync(Store.Web.ProductService.Product product) {
+            return base.Channel.UpdateProductAsync(product);
         }
         
         public Store.Web.ProductService.Product GetProductById(int id) {
@@ -589,11 +603,11 @@ namespace Store.Web.ProductService {
             return base.Channel.GetProductByIdAsync(id);
         }
         
-        public string AddProductCategory(Store.Web.ProductService.ProductCategory productCategory) {
+        public int AddProductCategory(Store.Web.ProductService.ProductCategory productCategory) {
             return base.Channel.AddProductCategory(productCategory);
         }
         
-        public System.Threading.Tasks.Task<string> AddProductCategoryAsync(Store.Web.ProductService.ProductCategory productCategory) {
+        public System.Threading.Tasks.Task<int> AddProductCategoryAsync(Store.Web.ProductService.ProductCategory productCategory) {
             return base.Channel.AddProductCategoryAsync(productCategory);
         }
         

@@ -24,7 +24,6 @@ namespace Store.Web.Models
 
         [DataType(DataType.Upload)]
         [Display(Name = "Upload Image")]
-        [Required(ErrorMessage = "Please choose file to upload.")]
         public HttpPostedFileBase FileImage { get; set; }
     }
 }
