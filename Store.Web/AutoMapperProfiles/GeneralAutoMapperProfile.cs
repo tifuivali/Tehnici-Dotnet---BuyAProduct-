@@ -12,6 +12,7 @@ namespace Store.Web.AutoMapperProfiles
             CreateMap<UserAccountViewModel, Customer>().ReverseMap();
             CreateMap<ProductViewModel, Product>().ReverseMap();
             CreateMap<ProductViewModel, ProductService.Product>().ReverseMap();
+            CreateMap<Customer, OrderService.Customer>().ReverseMap();
         }
     }
 }

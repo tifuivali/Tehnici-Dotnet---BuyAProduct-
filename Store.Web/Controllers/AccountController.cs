@@ -7,17 +7,21 @@ using System.Web.Security;
 using AutoMapper;
 using Store.Web.CustomerService;
 using Store.Web.Models;
+using Store.Web.OrderService;
 using Store.Web.Security;
+using Customer = Store.Web.CustomerService.Customer;
 
 namespace Store.Web.Controllers
 {
     public class AccountController : Controller
     {
         private readonly CustomerServiceClient customerServiceClient;
+        private readonly OrderServiceClient orderServiceClient;
 
-        public AccountController(CustomerServiceClient customerServiceClient)
+        public AccountController(CustomerServiceClient customerServiceClient, OrderServiceClient orderServiceClient)
         {
             this.customerServiceClient = customerServiceClient;
+            this.orderServiceClient = orderServiceClient;
         }
 
         [HttpGet]
@@ -64,7 +68,7 @@ namespace Store.Web.Controllers
 
                 var customer = Mapper.Map<Customer>(userAccountViewModel);
                 var createdUser = customerServiceClient.AddCustomer(customer);
-
+                orderServiceClient.CreateCart(customer.Email);
                 if (createdUser != null)
                 {
                     return RedirectToAction("Login");

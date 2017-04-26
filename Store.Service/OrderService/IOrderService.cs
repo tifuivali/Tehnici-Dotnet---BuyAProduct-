@@ -15,7 +15,13 @@ namespace Store.Service.OrderService
         string AddOrder(Order order);
 
         [OperationContract]
-        int CreateCart(Customer customer);
+        int CreateCart(string email);
+
+        [OperationContract]
+        Cart GetUserCart(string email);
+
+        [OperationContract]
+        int UpdateUserCart(Cart cart);
 
         [OperationContract]
         string DeleteOrder(int id);

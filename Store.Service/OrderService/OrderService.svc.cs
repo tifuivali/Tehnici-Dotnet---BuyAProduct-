@@ -3,7 +3,7 @@ using System.Linq;
 using AutoMapper;
 using Store.Domain.CartManagement;
 using Store.Domain.OrderManagement;
-using Store.Service.CustomerService.Data;
+using Cart = Store.Service.OrderService.Data.Cart;
 using Order = Store.Service.OrderService.Data.Order;
 
 namespace Store.Service.OrderService
@@ -31,10 +31,20 @@ namespace Store.Service.OrderService
             return "Order created!";
         }
 
-        public int CreateCart(Customer customer)
+        public int CreateCart(string email)
         {
-            var cartId = cartRepository.CreateCart(Mapper.Map<Domain.CustomerManagement.Customer>(customer));
+            var cartId = cartRepository.CreateCart(email);
             return cartId;
+        }
+
+        public Cart GetUserCart(string email)
+        {
+            return Mapper.Map<Cart>(cartRepository.GetUserCart(email));
+        }
+
+        public int UpdateUserCart(Cart cart)
+        {
+            return cartRepository.UpdateUserCart(Mapper.Map<Domain.CartManagement.Cart>(cart));
         }
 
         public string DeleteOrder(int id)

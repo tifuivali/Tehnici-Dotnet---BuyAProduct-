@@ -21,6 +21,24 @@
   <wsdl:message name="IOrderService_AddOrder_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddOrderResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderService_CreateCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCart" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_CreateCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetUserCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserCart" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetUserCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateUserCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserCart" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateUserCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserCartResponse" />
+  </wsdl:message>
   <wsdl:message name="IOrderService_DeleteOrder_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteOrder" />
   </wsdl:message>
@@ -35,6 +53,18 @@
     <wsdl:operation name="AddOrder">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/AddOrder" message="tns:IOrderService_AddOrder_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/AddOrderResponse" message="tns:IOrderService_AddOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/CreateCart" message="tns:IOrderService_CreateCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/CreateCartResponse" message="tns:IOrderService_CreateCart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetUserCart" message="tns:IOrderService_GetUserCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetUserCartResponse" message="tns:IOrderService_GetUserCart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/UpdateUserCart" message="tns:IOrderService_UpdateUserCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/UpdateUserCartResponse" message="tns:IOrderService_UpdateUserCart_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteOrder">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/DeleteOrder" message="tns:IOrderService_DeleteOrder_InputMessage" />
@@ -54,6 +84,33 @@
     </wsdl:operation>
     <wsdl:operation name="AddOrder">
       <soap:operation soapAction="http://tempuri.org/IOrderService/AddOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCart">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/CreateCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCart">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/GetUserCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserCart">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/UpdateUserCart" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

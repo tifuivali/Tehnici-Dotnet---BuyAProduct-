@@ -497,6 +497,83 @@ namespace Store.Web.OrderService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Cart", Namespace="http://schemas.datacontract.org/2004/07/Store.Service.OrderService.Data")]
+    [System.SerializableAttribute()]
+    public partial class Cart : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Store.Web.OrderService.Customer CustomerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Store.Web.OrderService.Product[] ProductsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Store.Web.OrderService.Customer Customer {
+            get {
+                return this.CustomerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerField, value) != true)) {
+                    this.CustomerField = value;
+                    this.RaisePropertyChanged("Customer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Store.Web.OrderService.Product[] Products {
+            get {
+                return this.ProductsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductsField, value) != true)) {
+                    this.ProductsField = value;
+                    this.RaisePropertyChanged("Products");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OrderService.IOrderService")]
     public interface IOrderService {
@@ -512,6 +589,24 @@ namespace Store.Web.OrderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/AddOrder", ReplyAction="http://tempuri.org/IOrderService/AddOrderResponse")]
         System.Threading.Tasks.Task<string> AddOrderAsync(Store.Web.OrderService.Order order);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/CreateCart", ReplyAction="http://tempuri.org/IOrderService/CreateCartResponse")]
+        int CreateCart(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/CreateCart", ReplyAction="http://tempuri.org/IOrderService/CreateCartResponse")]
+        System.Threading.Tasks.Task<int> CreateCartAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetUserCart", ReplyAction="http://tempuri.org/IOrderService/GetUserCartResponse")]
+        Store.Web.OrderService.Cart GetUserCart(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetUserCart", ReplyAction="http://tempuri.org/IOrderService/GetUserCartResponse")]
+        System.Threading.Tasks.Task<Store.Web.OrderService.Cart> GetUserCartAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/UpdateUserCart", ReplyAction="http://tempuri.org/IOrderService/UpdateUserCartResponse")]
+        int UpdateUserCart(Store.Web.OrderService.Cart cart);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/UpdateUserCart", ReplyAction="http://tempuri.org/IOrderService/UpdateUserCartResponse")]
+        System.Threading.Tasks.Task<int> UpdateUserCartAsync(Store.Web.OrderService.Cart cart);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/DeleteOrder", ReplyAction="http://tempuri.org/IOrderService/DeleteOrderResponse")]
         string DeleteOrder(int id);
@@ -561,6 +656,30 @@ namespace Store.Web.OrderService {
         
         public System.Threading.Tasks.Task<string> AddOrderAsync(Store.Web.OrderService.Order order) {
             return base.Channel.AddOrderAsync(order);
+        }
+        
+        public int CreateCart(string email) {
+            return base.Channel.CreateCart(email);
+        }
+        
+        public System.Threading.Tasks.Task<int> CreateCartAsync(string email) {
+            return base.Channel.CreateCartAsync(email);
+        }
+        
+        public Store.Web.OrderService.Cart GetUserCart(string email) {
+            return base.Channel.GetUserCart(email);
+        }
+        
+        public System.Threading.Tasks.Task<Store.Web.OrderService.Cart> GetUserCartAsync(string email) {
+            return base.Channel.GetUserCartAsync(email);
+        }
+        
+        public int UpdateUserCart(Store.Web.OrderService.Cart cart) {
+            return base.Channel.UpdateUserCart(cart);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateUserCartAsync(Store.Web.OrderService.Cart cart) {
+            return base.Channel.UpdateUserCartAsync(cart);
         }
         
         public string DeleteOrder(int id) {
