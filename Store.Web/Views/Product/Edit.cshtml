@@ -1,0 +1,49 @@
+﻿@using DelegateDecompiler
+@model Store.Web.Models.ProductViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container center_div">
+
+    @if (Model.Id > 0)
+    {
+        <h2>Edit Product</h2>              }
+    else
+    {
+        <h2>Add new Product</h2>
+    }
+
+    @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.ImageUrl)
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Specification)
+            @Html.TextBoxFor(m => m.Specification, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Specification)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Price)
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control", @type = "number" })
+            @Html.ValidationMessageFor(m => m.Price)
+        </div>
+
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.FileImage, new { type = "file", value = "test" })
+        </div>
+
+        <button type="submit" class="btn btn-default">Save</button>
+    }
+</div>
+
+
