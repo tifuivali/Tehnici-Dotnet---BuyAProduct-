@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
-using Store.Service.CustomerService.Data;
 using Store.Service.OrderService.Data;
+using Store.Service.ProductService.Data;
 
 namespace Store.Service.OrderService
 {
@@ -19,6 +19,9 @@ namespace Store.Service.OrderService
 
         [OperationContract]
         Cart GetUserCart(string email);
+
+        [OperationContract]
+        int AddProductToCart(int productId, string userEmail);
 
         [OperationContract]
         int UpdateUserCart(Cart cart);

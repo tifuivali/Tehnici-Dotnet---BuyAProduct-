@@ -1,19 +1,43 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
+using Store.Web.CustomerService;
 using Store.Web.Models;
+using Store.Web.OrderService;
 using Store.Web.ProductService;
 using Store.Web.Security;
+using Order = Store.Web.OrderService.Order;
+using Product = Store.Web.ProductService.Product;
 
 namespace Store.Web.Controllers
 {
     public class ProductController : Controller
     {
         private readonly ProductServiceClient productServiceClient;
+        private readonly CustomerServiceClient customerServiceClient;
+        private readonly OrderServiceClient orderServiceClient;
 
-        public ProductController(ProductServiceClient productServiceClient)
+        public ProductController(ProductServiceClient productServiceClient, CustomerServiceClient customerServiceClient, OrderServiceClient orderServiceClient)
         {
             this.productServiceClient = productServiceClient;
+            this.customerServiceClient = customerServiceClient;
+            this.orderServiceClient = orderServiceClient;
+        }
+
+        [HttpGet]
+        [AuthorizeUsers]
+        public ActionResult Index()
+        {
+            var products = productServiceClient.GetAllProducts();
+            var productsViewModels = products.Select(Mapper.Map<ProductViewModel>).ToList();
+            var model = new ProductListViewModel
+            {
+                Products = productsViewModels
+            };
+
+            return View(model);
         }
 
         [HttpGet]
@@ -100,6 +124,25 @@ namespace Store.Web.Controllers
             }
 
             return View(productViewModel);
+        }
+
+        [HttpGet]
+        [AuthorizeUsers]
+        public ActionResult Purchase()
+        {
+            var customer = customerServiceClient.GetCustomerByEmail(User.Identity.Name);
+            var orderedProducts = orderServiceClient.GetUserCart(User.Identity.Name).Products;
+            var order = new Order
+            {
+                Customer = Mapper.Map<OrderService.Customer>(customer),
+                Date = DateTime.Now,
+                Products = orderedProducts,
+                Id = 0
+            };
+
+            orderServiceClient.AddOrder(order);
+
+            return RedirectToAction("Index", "Order");
         }
     }
 }

@@ -42,5 +42,14 @@ namespace Store.Domain.CartManagement
             context.SaveChanges();
             return cartDao.Id;
         }
+
+        public int AddProductToCart(int productId, string userEmail)
+        {
+            var cartDto = context.Carts.SingleOrDefault(x => x.Customer.Email == userEmail);
+            var productDao = context.Products.SingleOrDefault(x => x.Id == productId);
+            cartDto?.Products.Add(productDao);
+            context.SaveChanges();
+            return 1;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using AutoMapper;
 using Store.Database;
@@ -20,8 +21,10 @@ namespace Store.Domain.OrderManagement
 
         public void AddOrder(Order order)
         {
+            var customerDto = storeContext.Customers.SingleOrDefault(x => x.Id == order.Id);
             var orderDto = Mapper.Map<Database.Models.Order>(order);
-            storeContext.Orders.Add(orderDto);
+            orderDto.Customer = customerDto;
+            storeContext.Orders.AddOrUpdate(orderDto);
             storeContext.SaveChanges();
         }
 

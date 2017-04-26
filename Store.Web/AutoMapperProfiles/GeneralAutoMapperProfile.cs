@@ -13,6 +13,7 @@ namespace Store.Web.AutoMapperProfiles
             CreateMap<ProductViewModel, Product>().ReverseMap();
             CreateMap<ProductViewModel, ProductService.Product>().ReverseMap();
             CreateMap<Customer, OrderService.Customer>().ReverseMap();
+            CreateMap<OrderService.Product, ProductViewModel>().ReverseMap();
         }
     }
 }

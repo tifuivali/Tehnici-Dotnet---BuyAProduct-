@@ -33,6 +33,12 @@
   <wsdl:message name="IOrderService_GetUserCart_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserCartResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderService_AddProductToCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductToCart" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_AddProductToCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductToCartResponse" />
+  </wsdl:message>
   <wsdl:message name="IOrderService_UpdateUserCart_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserCart" />
   </wsdl:message>
@@ -61,6 +67,10 @@
     <wsdl:operation name="GetUserCart">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetUserCart" message="tns:IOrderService_GetUserCart_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetUserCartResponse" message="tns:IOrderService_GetUserCart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductToCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/AddProductToCart" message="tns:IOrderService_AddProductToCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/AddProductToCartResponse" message="tns:IOrderService_AddProductToCart_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateUserCart">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/UpdateUserCart" message="tns:IOrderService_UpdateUserCart_InputMessage" />
@@ -102,6 +112,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserCart">
       <soap:operation soapAction="http://tempuri.org/IOrderService/GetUserCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductToCart">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/AddProductToCart" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

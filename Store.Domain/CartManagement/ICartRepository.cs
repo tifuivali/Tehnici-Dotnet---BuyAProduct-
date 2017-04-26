@@ -1,6 +1,4 @@
-﻿using Store.Domain.CustomerManagement;
-
-namespace Store.Domain.CartManagement
+﻿namespace Store.Domain.CartManagement
 {
     public interface ICartRepository
     {
@@ -8,5 +6,7 @@ namespace Store.Domain.CartManagement
         Cart GetUserCart(string email);
 
         int UpdateUserCart(Cart cart);
+
+        int AddProductToCart(int productId, string userEmail);
     }
 }

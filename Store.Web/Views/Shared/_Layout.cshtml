@@ -56,7 +56,7 @@
                                 @if (User.Identity.Name != "admin@store.com")
                                 {
                                     <li><a href="@Url.Action("Edit", "Account", new {@email = User.Identity.Name})"><span class="glyphicon glyphicon-edit"></span> Edit Account</a></li>
-                                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> View Cart</a></li>
+                                    <li><a href="@Url.Action("Index","Cart")"><span class="glyphicon glyphicon-shopping-cart"></span> View Shopping Cart</a></li>
                                     <li><a href="#"><span class="glyphicon glyphicon-folder-close"></span> View Orders</a></li>
                                 }
                                 else

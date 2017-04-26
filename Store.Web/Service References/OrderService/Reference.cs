@@ -602,6 +602,12 @@ namespace Store.Web.OrderService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetUserCart", ReplyAction="http://tempuri.org/IOrderService/GetUserCartResponse")]
         System.Threading.Tasks.Task<Store.Web.OrderService.Cart> GetUserCartAsync(string email);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/AddProductToCart", ReplyAction="http://tempuri.org/IOrderService/AddProductToCartResponse")]
+        int AddProductToCart(int productId, string userEmail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/AddProductToCart", ReplyAction="http://tempuri.org/IOrderService/AddProductToCartResponse")]
+        System.Threading.Tasks.Task<int> AddProductToCartAsync(int productId, string userEmail);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/UpdateUserCart", ReplyAction="http://tempuri.org/IOrderService/UpdateUserCartResponse")]
         int UpdateUserCart(Store.Web.OrderService.Cart cart);
         
@@ -672,6 +678,14 @@ namespace Store.Web.OrderService {
         
         public System.Threading.Tasks.Task<Store.Web.OrderService.Cart> GetUserCartAsync(string email) {
             return base.Channel.GetUserCartAsync(email);
+        }
+        
+        public int AddProductToCart(int productId, string userEmail) {
+            return base.Channel.AddProductToCart(productId, userEmail);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddProductToCartAsync(int productId, string userEmail) {
+            return base.Channel.AddProductToCartAsync(productId, userEmail);
         }
         
         public int UpdateUserCart(Store.Web.OrderService.Cart cart) {

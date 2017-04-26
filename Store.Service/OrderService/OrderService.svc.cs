@@ -3,6 +3,8 @@ using System.Linq;
 using AutoMapper;
 using Store.Domain.CartManagement;
 using Store.Domain.OrderManagement;
+using Store.Domain.ProductManagement;
+using Store.Service.ProductService.Data;
 using Cart = Store.Service.OrderService.Data.Cart;
 using Order = Store.Service.OrderService.Data.Order;
 
@@ -12,11 +14,13 @@ namespace Store.Service.OrderService
     {
         private readonly IOrderRepository orderRepository;
         private readonly ICartRepository cartRepository;
+        private readonly IProductRepository productRepository;
 
-        public OrderService(IOrderRepository orderRepository, ICartRepository cartRepository)
+        public OrderService(IOrderRepository orderRepository, ICartRepository cartRepository, IProductRepository productRepository)
         {
             this.orderRepository = orderRepository;
             this.cartRepository = cartRepository;
+            this.productRepository = productRepository;
         }
 
         public IEnumerable<Order> GetAllOrders()
@@ -51,6 +55,12 @@ namespace Store.Service.OrderService
         {
             orderRepository.DeleteOrderById(id);
             return "Order deleted!";
+        }
+
+        public int AddProductToCart(int productId, string userEmail)
+        {
+            cartRepository.AddProductToCart(productId, userEmail);
+            return 1;
         }
     }
 }
