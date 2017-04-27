@@ -45,6 +45,12 @@
   <wsdl:message name="IOrderService_UpdateUserCart_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserCartResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrdersForCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrdersForCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrdersForCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrdersForCustomerResponse" />
+  </wsdl:message>
   <wsdl:message name="IOrderService_DeleteOrder_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteOrder" />
   </wsdl:message>
@@ -75,6 +81,10 @@
     <wsdl:operation name="UpdateUserCart">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/UpdateUserCart" message="tns:IOrderService_UpdateUserCart_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/UpdateUserCartResponse" message="tns:IOrderService_UpdateUserCart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrdersForCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetOrdersForCustomer" message="tns:IOrderService_GetOrdersForCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetOrdersForCustomerResponse" message="tns:IOrderService_GetOrdersForCustomer_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteOrder">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/DeleteOrder" message="tns:IOrderService_DeleteOrder_InputMessage" />
@@ -130,6 +140,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUserCart">
       <soap:operation soapAction="http://tempuri.org/IOrderService/UpdateUserCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrdersForCustomer">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/GetOrdersForCustomer" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

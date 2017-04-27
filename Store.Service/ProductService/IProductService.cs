@@ -26,6 +26,12 @@ namespace Store.Service.ProductService
         IEnumerable<ProductCategory> GetAllProductCategories();
 
         [OperationContract]
+        IEnumerable<Product> SearchProductsByName(string name);
+
+        [OperationContract]
+        IEnumerable<string> GetProductSugestions(string productName);
+
+        [OperationContract]
         ProductCategory GetProductCategoryById(int id);
     }
 }

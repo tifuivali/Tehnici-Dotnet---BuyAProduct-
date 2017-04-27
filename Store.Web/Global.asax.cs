@@ -2,6 +2,7 @@
 using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac.Integration.Mvc;
+using System.Web.Http;
 
 namespace Store.Web
 {
@@ -10,6 +11,7 @@ namespace Store.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

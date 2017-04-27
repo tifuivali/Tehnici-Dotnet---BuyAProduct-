@@ -62,5 +62,16 @@ namespace Store.Service.ProductService
             var domainProductCategory = productCategoryRepository.GetProductCategoryById(id);
             return Mapper.Map<ProductCategory>(domainProductCategory);
         }
+
+        public IEnumerable<Product> SearchProductsByName(string name)
+        {
+            return productRepository.GetProductsByName(name).Select(Mapper.Map<Product>).ToList();
+        }
+
+        public IEnumerable<string> GetProductSugestions(string productName)
+        {
+            return productRepository.GetPrducttNameForGivenName(productName).ToList();
+        }
     }
 }
+

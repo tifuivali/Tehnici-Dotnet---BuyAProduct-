@@ -8,5 +8,7 @@ namespace Store.Domain.ProductManagement
         int AddProduct(Product product);
         int UpdateProduct(Product product);
         Product GetProductById(int id);
+        IList<Product> GetProductsByName(string name);
+        IList<string> GetPrducttNameForGivenName(string name);
     }
 }

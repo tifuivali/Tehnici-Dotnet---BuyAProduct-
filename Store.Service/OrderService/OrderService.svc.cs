@@ -2,9 +2,9 @@
 using System.Linq;
 using AutoMapper;
 using Store.Domain.CartManagement;
+using Store.Domain.CustomerManagement;
 using Store.Domain.OrderManagement;
 using Store.Domain.ProductManagement;
-using Store.Service.ProductService.Data;
 using Cart = Store.Service.OrderService.Data.Cart;
 using Order = Store.Service.OrderService.Data.Order;
 
@@ -15,12 +15,14 @@ namespace Store.Service.OrderService
         private readonly IOrderRepository orderRepository;
         private readonly ICartRepository cartRepository;
         private readonly IProductRepository productRepository;
+        private readonly ICustomerRepository customerRepository;
 
-        public OrderService(IOrderRepository orderRepository, ICartRepository cartRepository, IProductRepository productRepository)
+        public OrderService(IOrderRepository orderRepository, ICartRepository cartRepository, IProductRepository productRepository, ICustomerRepository customerRepository)
         {
             this.orderRepository = orderRepository;
             this.cartRepository = cartRepository;
             this.productRepository = productRepository;
+            this.customerRepository = customerRepository;
         }
 
         public IEnumerable<Order> GetAllOrders()
@@ -61,6 +63,12 @@ namespace Store.Service.OrderService
         {
             cartRepository.AddProductToCart(productId, userEmail);
             return 1;
+        }
+
+        public IEnumerable<Order> GetOrdersForCustomer(int customerId)
+        {
+            var orders = orderRepository.GetAllOrders();
+            return orders.Where(x => x.Customer.Id == customerId).Select(Mapper.Map<Order>).ToList();
         }
     }
 }

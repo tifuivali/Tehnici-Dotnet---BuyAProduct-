@@ -537,6 +537,18 @@ namespace Store.Web.ProductService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetAllProductCategories", ReplyAction="http://tempuri.org/IProductService/GetAllProductCategoriesResponse")]
         System.Threading.Tasks.Task<Store.Web.ProductService.ProductCategory[]> GetAllProductCategoriesAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/SearchProductsByName", ReplyAction="http://tempuri.org/IProductService/SearchProductsByNameResponse")]
+        Store.Web.ProductService.Product[] SearchProductsByName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/SearchProductsByName", ReplyAction="http://tempuri.org/IProductService/SearchProductsByNameResponse")]
+        System.Threading.Tasks.Task<Store.Web.ProductService.Product[]> SearchProductsByNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductSugestions", ReplyAction="http://tempuri.org/IProductService/GetProductSugestionsResponse")]
+        string[] GetProductSugestions(string productName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductSugestions", ReplyAction="http://tempuri.org/IProductService/GetProductSugestionsResponse")]
+        System.Threading.Tasks.Task<string[]> GetProductSugestionsAsync(string productName);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductCategoryById", ReplyAction="http://tempuri.org/IProductService/GetProductCategoryByIdResponse")]
         Store.Web.ProductService.ProductCategory GetProductCategoryById(int id);
         
@@ -617,6 +629,22 @@ namespace Store.Web.ProductService {
         
         public System.Threading.Tasks.Task<Store.Web.ProductService.ProductCategory[]> GetAllProductCategoriesAsync() {
             return base.Channel.GetAllProductCategoriesAsync();
+        }
+        
+        public Store.Web.ProductService.Product[] SearchProductsByName(string name) {
+            return base.Channel.SearchProductsByName(name);
+        }
+        
+        public System.Threading.Tasks.Task<Store.Web.ProductService.Product[]> SearchProductsByNameAsync(string name) {
+            return base.Channel.SearchProductsByNameAsync(name);
+        }
+        
+        public string[] GetProductSugestions(string productName) {
+            return base.Channel.GetProductSugestions(productName);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetProductSugestionsAsync(string productName) {
+            return base.Channel.GetProductSugestionsAsync(productName);
         }
         
         public Store.Web.ProductService.ProductCategory GetProductCategoryById(int id) {

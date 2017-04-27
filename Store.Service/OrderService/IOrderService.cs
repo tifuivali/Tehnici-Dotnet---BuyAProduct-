@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
 using Store.Service.OrderService.Data;
-using Store.Service.ProductService.Data;
 
 namespace Store.Service.OrderService
 {
@@ -25,6 +24,9 @@ namespace Store.Service.OrderService
 
         [OperationContract]
         int UpdateUserCart(Cart cart);
+
+        [OperationContract]
+        IEnumerable<Order> GetOrdersForCustomer(int customerId);
 
         [OperationContract]
         string DeleteOrder(int id);

@@ -614,6 +614,12 @@ namespace Store.Web.OrderService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/UpdateUserCart", ReplyAction="http://tempuri.org/IOrderService/UpdateUserCartResponse")]
         System.Threading.Tasks.Task<int> UpdateUserCartAsync(Store.Web.OrderService.Cart cart);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrdersForCustomer", ReplyAction="http://tempuri.org/IOrderService/GetOrdersForCustomerResponse")]
+        Store.Web.OrderService.Order[] GetOrdersForCustomer(int customerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrdersForCustomer", ReplyAction="http://tempuri.org/IOrderService/GetOrdersForCustomerResponse")]
+        System.Threading.Tasks.Task<Store.Web.OrderService.Order[]> GetOrdersForCustomerAsync(int customerId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/DeleteOrder", ReplyAction="http://tempuri.org/IOrderService/DeleteOrderResponse")]
         string DeleteOrder(int id);
         
@@ -694,6 +700,14 @@ namespace Store.Web.OrderService {
         
         public System.Threading.Tasks.Task<int> UpdateUserCartAsync(Store.Web.OrderService.Cart cart) {
             return base.Channel.UpdateUserCartAsync(cart);
+        }
+        
+        public Store.Web.OrderService.Order[] GetOrdersForCustomer(int customerId) {
+            return base.Channel.GetOrdersForCustomer(customerId);
+        }
+        
+        public System.Threading.Tasks.Task<Store.Web.OrderService.Order[]> GetOrdersForCustomerAsync(int customerId) {
+            return base.Channel.GetOrdersForCustomerAsync(customerId);
         }
         
         public string DeleteOrder(int id) {

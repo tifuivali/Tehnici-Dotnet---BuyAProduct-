@@ -3,6 +3,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using AutoMapper;
 using Store.Database;
+using Store.Database.Models;
 
 namespace Store.Domain.OrderManagement
 {
@@ -21,9 +22,11 @@ namespace Store.Domain.OrderManagement
 
         public void AddOrder(Order order)
         {
-            var customerDto = storeContext.Customers.SingleOrDefault(x => x.Id == order.Id);
+            var customerDto = storeContext.Customers.SingleOrDefault(x => x.Id == order.Customer.Id);
+            var productOrdersDtos = order.Products.Select(product => storeContext.Products.SingleOrDefault(x => x.Id == product.Id)).ToList();
             var orderDto = Mapper.Map<Database.Models.Order>(order);
             orderDto.Customer = customerDto;
+            orderDto.Products = productOrdersDtos;
             storeContext.Orders.AddOrUpdate(orderDto);
             storeContext.SaveChanges();
         }

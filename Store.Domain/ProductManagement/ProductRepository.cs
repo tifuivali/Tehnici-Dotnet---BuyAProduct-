@@ -3,7 +3,6 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using AutoMapper;
 using Store.Database;
-using Store.Database.Models;
 
 namespace Store.Domain.ProductManagement
 {
@@ -35,6 +34,12 @@ namespace Store.Domain.ProductManagement
             return Mapper.Map<Product>(product);
         }
 
+        public IList<Product> GetProductsByName(string name)
+        {
+            var productsDto = storeContext.Products.Where(x => x.Name.Trim().ToUpper().Contains(name.Trim().ToUpper()));
+            return productsDto.Select(Mapper.Map<Product>).ToList();
+        }
+
         public int AddProduct(Product product)
         {
             var productDto = Mapper.Map<Database.Models.Product>(product);
@@ -43,5 +48,12 @@ namespace Store.Domain.ProductManagement
             return productDto.Id;
         }
 
+        public IList<string> GetPrducttNameForGivenName(string name)
+        {
+            return
+                storeContext.Products.Where(x => x.Name.Trim().ToUpper().Contains(name.Trim().ToUpper()))
+                    .Select(y => y.Name)
+                    .ToList();
+        }
     }
 }

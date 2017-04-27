@@ -21,7 +21,9 @@ namespace Store.Web.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            var orders = customerServiceClient.GetCustomerByEmail(User.Identity.Name).Orders;
+
+            var customer = customerServiceClient.GetCustomerByEmail(User.Identity.Name);
+            var orders = orderServiceClient.GetOrdersForCustomer(customer.Id);
             var customerOrdersViewMdoels = orders.Where(x => x.Customer.Email == User.Identity.Name).Select(Mapper.Map<OrderViewModel>).ToList();
             var model = new OrderListViewModel
             {

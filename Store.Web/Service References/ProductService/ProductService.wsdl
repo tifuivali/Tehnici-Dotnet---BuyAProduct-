@@ -7,6 +7,7 @@
       <xsd:import schemaLocation="http://localhost:58486/ProductService/ProductService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Store.Service.ProductService.Data" />
       <xsd:import schemaLocation="http://localhost:58486/ProductService/ProductService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Store.Service.OrderService.Data" />
       <xsd:import schemaLocation="http://localhost:58486/ProductService/ProductService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Store.Service.CustomerService.Data" />
+      <xsd:import schemaLocation="http://localhost:58486/ProductService/ProductService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IProductService_GetAllProducts_InputMessage">
@@ -45,6 +46,18 @@
   <wsdl:message name="IProductService_GetAllProductCategories_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllProductCategoriesResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductService_SearchProductsByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductsByName" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_SearchProductsByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductsByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_GetProductSugestions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductSugestions" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_GetProductSugestions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductSugestionsResponse" />
+  </wsdl:message>
   <wsdl:message name="IProductService_GetProductCategoryById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProductCategoryById" />
   </wsdl:message>
@@ -75,6 +88,14 @@
     <wsdl:operation name="GetAllProductCategories">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetAllProductCategories" message="tns:IProductService_GetAllProductCategories_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductService/GetAllProductCategoriesResponse" message="tns:IProductService_GetAllProductCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProductsByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/SearchProductsByName" message="tns:IProductService_SearchProductsByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/SearchProductsByNameResponse" message="tns:IProductService_SearchProductsByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductSugestions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetProductSugestions" message="tns:IProductService_GetProductSugestions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/GetProductSugestionsResponse" message="tns:IProductService_GetProductSugestions_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetProductCategoryById">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetProductCategoryById" message="tns:IProductService_GetProductCategoryById_InputMessage" />
@@ -130,6 +151,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllProductCategories">
       <soap:operation soapAction="http://tempuri.org/IProductService/GetAllProductCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchProductsByName">
+      <soap:operation soapAction="http://tempuri.org/IProductService/SearchProductsByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductSugestions">
+      <soap:operation soapAction="http://tempuri.org/IProductService/GetProductSugestions" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

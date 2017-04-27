@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
@@ -38,6 +39,34 @@ namespace Store.Web.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        [AuthorizeUsers]
+        public ActionResult Search(string name)
+        {
+            var products = productServiceClient.SearchProductsByName(name);
+            var productsViewModels = products.Select(Mapper.Map<ProductViewModel>).ToList() ;
+            var model = new ProductListViewModel
+            {
+                Products = productsViewModels
+            };
+
+            return View("Index", model);
+        }
+
+        [HttpGet]
+        [AuthorizeUsers]
+        public ActionResult SearchByName(string name)
+        {
+            var products = productServiceClient.SearchProductsByName(name);
+            var productsViewModels = products.Select(Mapper.Map<ProductViewModel>).ToList();
+            var model = new ProductListViewModel
+            {
+                Products = productsViewModels
+            };
+
+            return View("Index", model);
         }
 
         [HttpGet]

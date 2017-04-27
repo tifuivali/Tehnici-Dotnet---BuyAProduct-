@@ -27,6 +27,7 @@
     <MetadataFile FileName="ProductService.wsdl" MetadataType="Wsdl" ID="8265a032-5cba-4e7d-8326-c2a1496687a9" SourceId="1" SourceUrl="http://localhost:58486/ProductService/ProductService.svc?wsdl" />
     <MetadataFile FileName="ProductService.disco" MetadataType="Disco" ID="ed36617d-8e98-47d0-9d9f-095a8b37b12a" SourceId="1" SourceUrl="http://localhost:58486/ProductService/ProductService.svc?disco" />
     <MetadataFile FileName="ProductService2.xsd" MetadataType="Schema" ID="3ebe35f1-1b42-441f-b28a-3cafcdcfd89d" SourceId="1" SourceUrl="http://localhost:58486/ProductService/ProductService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ProductService5.xsd" MetadataType="Schema" ID="4e3293c7-32c5-4874-96f6-c77a970fc171" SourceId="1" SourceUrl="http://localhost:58486/ProductService/ProductService.svc?xsd=xsd5" />
     <MetadataFile FileName="ProductService3.xsd" MetadataType="Schema" ID="34c0cb7a-8fd3-46d3-a120-9a88fdeb8c39" SourceId="1" SourceUrl="http://localhost:58486/ProductService/ProductService.svc?xsd=xsd0" />
     <MetadataFile FileName="ProductService4.xsd" MetadataType="Schema" ID="e2e34f2b-ae48-4fd4-a6a3-d5cb5ce69881" SourceId="1" SourceUrl="http://localhost:58486/ProductService/ProductService.svc?xsd=xsd1" />
   </Metadata>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:58486/ProductService/ProductService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Store.Service.ProductService.Data" />
+  <xs:import schemaLocation="http://localhost:58486/ProductService/ProductService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="GetAllProducts">
     <xs:complexType>
       <xs:sequence />
@@ -81,6 +82,34 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SearchProductsByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchProductsByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Store.Service.ProductService.Data" minOccurs="0" name="SearchProductsByNameResult" nillable="true" type="q7:ArrayOfProduct" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductSugestions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="productName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductSugestionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetProductSugestionsResult" nillable="true" type="q8:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetProductCategoryById">
     <xs:complexType>
       <xs:sequence>
@@ -91,7 +120,7 @@
   <xs:element name="GetProductCategoryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Store.Service.ProductService.Data" minOccurs="0" name="GetProductCategoryByIdResult" nillable="true" type="q7:ProductCategory" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Store.Service.ProductService.Data" minOccurs="0" name="GetProductCategoryByIdResult" nillable="true" type="q9:ProductCategory" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
