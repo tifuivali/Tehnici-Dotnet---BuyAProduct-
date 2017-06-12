@@ -105,7 +105,7 @@ namespace Store.Web.Controllers
                             var path = Path.Combine(Server.MapPath("~/Content/Images/Products"), fileName);
                             file.SaveAs(path);
                             var imageUrl = Url.Action("Index", "Home");
-                            imageUrl += "/Content/Images/Products/" + fileName;
+                            imageUrl += "Content/Images/Products/" + fileName;
                             productViewModel.ImageUrl = imageUrl;
                             product.ImageUrl = imageUrl;
                         }
@@ -113,7 +113,7 @@ namespace Store.Web.Controllers
                     else
                     {
                         var imageUrl = Url.Action("Index", "Home");
-                        imageUrl += "/Content/Images/Products/default.jpg";
+                        imageUrl += "Content/Images/Products/default.jpg";
                         product.ImageUrl = imageUrl;
                     }
                     var productCreatedId = productServiceClient.AddProduct(product);
